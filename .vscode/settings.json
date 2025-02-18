@@ -1,0 +1,27 @@
+{
+  "css.customData": [".vscode/config.tailwind.json"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "always",
+    "source.sortMembers": "always"
+  },
+  "sonarlint.connectedMode.project": {
+    "connectionId": "compodoc",
+    "projectKey": "compodoc_compodoc"
+  },
+  "editor.wordWrap": "on",
+  "cSpell.language": "en,es",
+  "cSpell.extendedDictionaries": ["spanish"],
+  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.enabledLanguageIds": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "css",
+    "scss",
+    "markdown",
+    "json"
+  ]
+}
