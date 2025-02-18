@@ -10,6 +10,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        gradient: {
+          "0%": {
+            "background-position": "0% 50%",
+            "backgroundPosition": "0% 50%",
+          },
+          "100%": {
+            "background-position": "100% 50%",
+            "backgroundPosition": "100% 50%",
+          },
+        },
+      },
+      animation: {
+        gradient: "gradient 8s linear infinite",
+      },
       colors: {
         "todo-primary": "#032944",
         "todo-secondary": "#4497D2",

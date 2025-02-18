@@ -1,0 +1,20 @@
+<form [formGroup]="form" class="space-y-6">
+  <label hlmLabel for="email"
+    >Email:
+
+    <input
+      hlmInput
+      aria-label="Ingresa tu email"
+      type="email"
+      placeholder="Ingresa tu email"
+      name="email"
+      formControlName="email"
+      class="w-80"
+    />
+  </label>
+  <button type="submit" class="w-full" [disabled]="!form.valid" hlmBtn>
+    Ingresar
+  </button>
+</form>
+<brn-separator hlmSeparator class="my-4" />
+<button class="w-full" hlmBtn [variant]="'outline'">Registrate</button>

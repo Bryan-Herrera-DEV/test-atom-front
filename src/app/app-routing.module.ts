@@ -22,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/auth', // Redirige a la página de autenticación si no se proporciona ninguna ruta
+        redirectTo: '/auth',
         pathMatch: 'full',
       },
 

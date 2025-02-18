@@ -151,6 +151,12 @@
       "@spartan-ng/ui-form-field-brain": [
         "./src/app/shared/application/components/ui-form-field-brain/src/index.ts"
       ],
+      "@spartan-ng/ui-formfield-helm": [
+        "./src/app/shared/application/components/ui-form-field/src/index.ts"
+      ],
+      "@spartan-ng/brain/form-field": [
+        "./src/app/shared/application/components/brain-form-field/src/index.ts"
+      ],
     }
   },
   "angularCompilerOptions": {
