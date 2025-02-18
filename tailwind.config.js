@@ -11,8 +11,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "bendo-primary": "#032944",
-        "bendo-secondary": "#4497D2",
+        "todo-primary": "#032944",
+        "todo-secondary": "#4497D2",
       },
       spacing: {
         5.5: "1.375rem",

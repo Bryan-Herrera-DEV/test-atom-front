@@ -7,6 +7,30 @@ const routes: Routes = [
   {
     path: '',
     component: PrincipalPageComponent,
+    children: [
+      {
+        path: 'auth',
+        loadChildren: () =>
+          import('./features/Auth/auth.module').then((m) => m.AuthModule),
+      },
+      {
+        path: 'common',
+        loadChildren: () =>
+          import('./features/Common/common.module').then(
+            (m) => m.CommonModuleModule,
+          ),
+      },
+      {
+        path: '',
+        redirectTo: '/auth', // Redirige a la página de autenticación si no se proporciona ninguna ruta
+        pathMatch: 'full',
+      },
+
+      {
+        path: '**',
+        redirectTo: '/common',
+      },
+    ],
   },
 ];
 

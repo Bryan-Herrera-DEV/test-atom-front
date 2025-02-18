@@ -9,6 +9,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './features/Auth/auth.module';
+import { CommonRoutingModule } from './features/Common/common-routing.module';
 import { ToastEffects } from './shared/application/toast/store/toast.effects';
 import { NgRxUtilities } from './shared/domain/utils/NgRxUtilities.service';
 
@@ -19,6 +21,8 @@ import { NgRxUtilities } from './shared/domain/utils/NgRxUtilities.service';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    AuthModule,
+    CommonRoutingModule,
     StoreModule.forRoot(
       {},
       {
