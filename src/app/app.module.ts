@@ -18,6 +18,7 @@ import { NgRxUtilities } from './shared/domain/utils/NgRxUtilities.service';
     CommonModule,
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     StoreModule.forRoot(
       {},
       {
