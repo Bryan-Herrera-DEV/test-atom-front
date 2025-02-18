@@ -1,11 +1,31 @@
-<div class="h-screen w-screen overflow-hidden border-border bg-background border-t relative">
-  <app-back-lines class="absolute z-0" [widthClass]="'w-screen'" [heightClass]="'h-screen'" />
-  <app-radial-gradient style="bottom: 0; right: 0" class="absolute z-0" [widthClass]="'w-screen'"
-    [heightClass]="'h-screen'" />
+<div
+  class="h-screen w-screen overflow-hidden border-border bg-background border-t relative"
+>
+  <app-back-lines
+    class="absolute z-0"
+    [widthClass]="'w-screen'"
+    [heightClass]="'h-screen'"
+  />
+  <app-radial-gradient
+    style="bottom: 0; right: 0"
+    class="absolute z-0"
+    [widthClass]="'w-screen'"
+    [heightClass]="'h-screen'"
+  />
 
-  <app-radial-gradient style="top: 0; left: 0; transform: rotate(180deg);" class="absolute z-0" [widthClass]="'w-screen'"
-    [heightClass]="'h-screen'" />
-  <hlm-toaster [position]="'top-right'" duration="1500" class="z-10" richColors [expand]="true" />
+  <app-radial-gradient
+    style="top: 0; left: 0; transform: rotate(180deg)"
+    class="absolute z-0"
+    [widthClass]="'w-screen'"
+    [heightClass]="'h-screen'"
+  />
+  <hlm-toaster
+    [position]="'top-right'"
+    duration="1500"
+    class="z-10"
+    richColors
+    [expand]="true"
+  />
   <div class="h-full flex relative w-full">
     <router-outlet></router-outlet>
   </div>

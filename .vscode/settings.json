@@ -1,5 +1,6 @@
 {
   "css.customData": [".vscode/config.tailwind.json"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
     "source.organizeImports": "always",
@@ -23,5 +24,8 @@
     "scss",
     "markdown",
     "json"
-  ]
+  ],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
