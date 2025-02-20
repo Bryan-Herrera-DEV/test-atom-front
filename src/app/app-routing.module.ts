@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoggedGuard } from './features/Auth/infrastructure/guards/logged.guard';
+import { NoAuthGuard } from './features/Auth/infrastructure/guards/no-auth.guard';
 import { PrincipalPageComponent } from './shared/application/layout/principal-page/principal-page.component';
 
 const routes: Routes = [
@@ -10,8 +12,22 @@ const routes: Routes = [
     children: [
       {
         path: 'auth',
+        canActivate: [NoAuthGuard],
         loadChildren: () =>
           import('./features/Auth/auth.module').then((m) => m.AuthModule),
+      },
+      {
+        path: 'dashboard',
+        canActivate: [LoggedGuard],
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./features/tasks/tasks.module').then(
+                (m) => m.TasksModule,
+              ),
+          },
+        ],
       },
       {
         path: 'common',

@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { HlmButtonModule } from '@spartan-ng/ui-button-helm';
-import { BrnCommandSeparatorComponent } from '@spartan-ng/ui-command-brain';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import {
   ErrorStateMatcher,
@@ -35,8 +34,7 @@ import { GetUserUseCase } from '../../../../Users/application/use-case/get-user.
     HlmInputModule,
     ReactiveFormsModule,
     HlmLabelDirective,
-    HlmSeparatorDirective,
-    BrnCommandSeparatorComponent,
+    HlmSeparatorDirective
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
@@ -45,6 +43,9 @@ export class LoginFormComponent {
   public form: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
   });
+
+  loadingSignal = this.getUserUseCase.loadingSignal;
+
   constructor(
     private readonly fb: FormBuilder,
     private readonly getUserUseCase: GetUserUseCase,

@@ -12,8 +12,13 @@
       class="w-80"
     />
   </label>
-  <button type="submit" class="w-full" [disabled]="!form.valid" hlmBtn>
-    Ingresar
+  <button
+    type="submit"
+    class="w-full"
+    [disabled]="!form.valid || loadingSignal()"
+    hlmBtn
+  >
+    {{ loadingSignal() ? "Cargando..." : "Ingresar" }}
   </button>
 </form>
 <brn-separator hlmSeparator class="my-4" />
