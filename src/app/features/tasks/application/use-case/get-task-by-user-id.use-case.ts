@@ -8,12 +8,6 @@ import { getTask } from '../stores/tasks.actions';
 import { TaskState } from '../stores/tasks.reducers';
 import { selectAllTasks, selectTaskLoading } from '../stores/tasks.selectors';
 
-interface CreateTaskInput {
-  name: string;
-  lastName: string;
-  email: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })

@@ -16,4 +16,9 @@ export class TaskRepository implements ITaskRepository {
   getTask(email: string): Observable<TaskProps[]> {
     return this.http.get<TaskProps[]>(`${this.apiUrl}?userEmail=${email}`);
   }
+
+  createTask(task: TaskProps): Observable<TaskProps> {
+    return this.http.post<TaskProps>(`${this.apiUrl}`, task);
+  }
+
 }

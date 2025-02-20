@@ -1,6 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { TaskProps } from '../../domain/Task';
-import { getTask, getTaskError, getTaskSuccess } from './tasks.actions';
+import {
+  createTask,
+  createTaskError,
+  createTaskSuccess,
+  getTask,
+  getTaskError,
+  getTaskSuccess,
+} from './tasks.actions';
 
 export interface TaskState {
   tasks: TaskProps[];
@@ -32,6 +39,25 @@ export const tasksReducer = createReducer(
   })),
 
   on(getTaskError, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+
+  on(createTask, (state) => ({
+    ...state,
+    loading: true,
+    error: null,
+  })),
+
+  on(createTaskSuccess, (state, { task }) => ({
+    ...state,
+    tasks: [...state.tasks, task],
+    loading: false,
+    error: null,
+  })),
+
+  on(createTaskError, (state, { error }) => ({
     ...state,
     loading: false,
     error,
