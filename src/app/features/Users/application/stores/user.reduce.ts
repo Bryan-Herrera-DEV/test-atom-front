@@ -7,6 +7,7 @@ import {
   getUser,
   getUserError,
   getUserSuccess,
+  logoutUser,
 } from './user.actions';
 
 export interface UserState {
@@ -45,5 +46,9 @@ export const userReducer = createReducer(
     ...state,
     loading: false,
     error,
+  })),
+
+  on(logoutUser, () => ({
+    ...initialState,
   })),
 );

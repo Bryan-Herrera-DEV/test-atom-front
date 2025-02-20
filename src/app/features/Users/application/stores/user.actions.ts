@@ -9,6 +9,8 @@ export const CREATE_USER = '[User] Create User';
 export const CREATE_USER_SUCCESS = '[User] Create User Success';
 export const CREATE_USER_ERROR = '[User] Create User Error';
 
+export const LOGOUT_USER = '[User] Logout User';
+
 export const getUser = createAction(GET_USER, props<{ email: string }>());
 export const getUserSuccess = createAction(GET_USER_SUCCESS, props<{ user: UserProps }>());
 export const getUserError = createAction(
@@ -25,3 +27,5 @@ export const createUserError = createAction(
   CREATE_USER_ERROR,
   props<{ error: Error }>(),
 );
+
+export const logoutUser = createAction(LOGOUT_USER);

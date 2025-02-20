@@ -14,6 +14,7 @@ import {
   HlmMenuSeparatorComponent
 } from '@spartan-ng/ui-menu-helm';
 import { GetUserUseCase } from '../../use-case/get-user.use-case';
+import { LogoutUseCase } from '../../use-case/logout.use-case';
 
 @Component({
   selector: 'app-user-info',
@@ -36,6 +37,7 @@ import { GetUserUseCase } from '../../use-case/get-user.use-case';
 export class UserInfoComponent {
 
   user = inject(GetUserUseCase).userSignal;
+  logoutUseCase = inject(LogoutUseCase);
 
 
   get fullName(): string {
@@ -46,5 +48,7 @@ export class UserInfoComponent {
     return this.user?.email;
   }
 
-  logout() {}
+  logout() {
+    this.logoutUseCase.execute();
+  }
 }
