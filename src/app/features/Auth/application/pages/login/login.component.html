@@ -1,14 +1,29 @@
-<div class="h-full w-full flex flex-col justify-center items-center">
-  <app-logo-app-text></app-logo-app-text>
-  <div class=" mt-6" hlmCard>
-    <div hlmCardHeader>
-      <h3 hlmCardTitle>Iniciar Sesion</h3>
-      <p hlmCardDescription>
-        Bienvenido a <span class="font-semibold">TODO</span> app
-      </p>
-    </div>
-    <div hlmCardContent>
-      <app-login-form />
+<hlm-dialog>
+
+  <div class="h-full w-full flex flex-col justify-center items-center">
+    <app-logo-app-text></app-logo-app-text>
+    <div class="mt-6" hlmCard>
+      <div hlmCardHeader>
+        <h3 hlmCardTitle>Iniciar Sesion</h3>
+        <p hlmCardDescription>
+          Bienvenido a <span class="font-semibold">TODO</span> app
+        </p>
+      </div>
+      <div hlmCardContent>
+        <app-login-form />
+
+        <button class="w-full" hlmBtn brnDialogTrigger  [variant]="'outline'">Registrate</button>
+      </div>
     </div>
   </div>
-</div>
+
+  <hlm-dialog-content class="sm:max-w-[425px]" *brnDialogContent="let ctx">
+    <hlm-dialog-header>
+      <h3 hlmDialogTitle>Crear Usuario</h3>
+    </hlm-dialog-header>
+    <div class="py-4 grid gap-4">
+      <app-register-form />
+    </div>
+  </hlm-dialog-content>
+
+</hlm-dialog>

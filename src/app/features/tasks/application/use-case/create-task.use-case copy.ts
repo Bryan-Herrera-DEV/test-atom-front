@@ -16,13 +16,6 @@ import {
 import { TaskState } from '../stores/tasks.reducers';
 import { selectTaskLoading } from '../stores/tasks.selectors';
 
-interface CreateTaskInput {
-  title: string;
-  description: string;
-  userEmail: string;
-  type: string; // Asumiendo que "type" es de tipo string
-}
-
 @Injectable({
   providedIn: 'root',
 })

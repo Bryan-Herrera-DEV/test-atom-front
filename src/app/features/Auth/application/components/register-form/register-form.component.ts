@@ -8,22 +8,13 @@ import {
 } from '@angular/forms';
 import { HlmButtonModule } from '@spartan-ng/ui-button-helm';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
-import {
-  ErrorStateMatcher,
-  ShowOnDirtyErrorStateMatcher,
-} from '@spartan-ng/ui-forms-brain';
 import { HlmInputDirective, HlmInputModule } from '@spartan-ng/ui-input-helm';
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmSelectImports, HlmSelectModule } from '@spartan-ng/ui-select-helm';
 import { HlmSeparatorDirective } from '@spartan-ng/ui-separator-helm';
-import { GetUserUseCase } from '../../../../Users/application/use-case/get-user.use-case';
-
 @Component({
-  providers: [
-    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
-  ],
+  selector: 'app-register-form',
   standalone: true,
-  selector: 'app-login-form',
   imports: [
     CommonModule,
     HlmFormFieldModule,
@@ -34,26 +25,21 @@ import { GetUserUseCase } from '../../../../Users/application/use-case/get-user.
     HlmInputModule,
     ReactiveFormsModule,
     HlmLabelDirective,
-    HlmSeparatorDirective
+    HlmSeparatorDirective,
   ],
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.scss',
+  templateUrl: './register-form.component.html',
+  styleUrl: './register-form.component.scss',
 })
-export class LoginFormComponent {
+export class RegisterFormComponent {
   public form: FormGroup = this.fb.group({
     email: ['hi@gmail.com', [Validators.required, Validators.email]],
+    name: ['', [Validators.required]],
+    lastName: ['', [Validators.required]],
   });
 
-  loadingSignal = this.getUserUseCase.loadingSignal;
-
-  constructor(
-    private readonly fb: FormBuilder,
-    private readonly getUserUseCase: GetUserUseCase,
-  ) {}
+  constructor(private readonly fb: FormBuilder) {}
 
   submit() {
     if (this.form.invalid) return;
-
-    this.getUserUseCase.execute(this.form.value.email).subscribe();
   }
 }

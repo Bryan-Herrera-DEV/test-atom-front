@@ -1,0 +1,50 @@
+<form [formGroup]="form" class="space-y-6" (ngSubmit)="submit()">
+  <label hlmLabel for="email"
+    >Email:
+
+    <input
+      hlmInput
+      aria-label="Ingresa tu email"
+      type="email"
+      placeholder="Ingresa tu email"
+      name="email"
+      formControlName="email"
+      class="w-80"
+    />
+  </label>
+  <label hlmLabel for="name"
+    >Email:
+
+    <input
+      hlmInput
+      aria-label="Ingresa tu nombre"
+      type="text"
+      placeholder="Ingresa tu nombre"
+      name="name"
+      formControlName="name"
+      class="w-80"
+    />
+  </label>
+  <label hlmLabel for="lastName"
+    >Email:
+
+    <input
+      hlmInput
+      aria-label="Ingresa tu apellido"
+      type="text"
+      placeholder="Ingresa tu apellido"
+      name="lastName"
+      formControlName="lastName"
+      class="w-80"
+    />
+  </label>
+  <button
+    type="submit"
+    class="w-full"
+    [disabled]="!form.valid"
+    hlmBtn
+  >
+    {{ false ? "Cargando..." : "Registrarme" }}
+  </button>
+</form>
+<brn-separator hlmSeparator class="my-4" />
