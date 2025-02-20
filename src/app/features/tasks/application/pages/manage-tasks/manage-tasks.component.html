@@ -1,1 +1,11 @@
-<app-task-status-counting [tasksGroupByStatus]="tasksGroupByStatus" />
+<app-task-status-counting
+  [tasksGroupByStatus]="tasksGroupByStatus"
+  (statusSelected)="onStatusSelected($event)"
+/>
+@if(loadingSignal()) {
+<p>Cargando</p>
+} @else {
+<app-table-tasks
+  [tasks]="this.filteredByStatus()"
+/>
+}

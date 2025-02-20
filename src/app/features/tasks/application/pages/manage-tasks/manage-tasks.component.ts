@@ -1,20 +1,44 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, signal } from '@angular/core';
+import { TaskProps, TTaskType } from '../../../domain/Task';
+import { TableTasksComponent } from '../../components/table-tasks/table-tasks.component';
 import { TaskStatusCountingComponent } from '../../components/task-status-counting/task-status-counting.component';
 import { GetTaskByUserIdUseCase } from '../../use-case/get-task-by-user-id.use-case';
 
 @Component({
   selector: 'app-manage-tasks',
   standalone: true,
-  imports: [TaskStatusCountingComponent],
+  imports: [TaskStatusCountingComponent, TableTasksComponent],
   templateUrl: './manage-tasks.component.html',
   styleUrl: './manage-tasks.component.scss',
 })
 export class ManageTasksComponent {
-  constructor(private readonly getTasks: GetTaskByUserIdUseCase) {
-    this.getTasks.execute().subscribe();
+  loadingSignal = this.getTasks.loadingSignal;
+  constructor(
+    private readonly getTasks: GetTaskByUserIdUseCase,
+    private readonly cdr: ChangeDetectorRef,
+  ) {
+    this.getTasks.execute().subscribe({
+      next: () => {
+        this.onStatusSelected('GETTING_STARTED')
+      }
+    })
   }
 
   get tasksGroupByStatus() {
     return this.getTasks.forTypeGroped;
+  }
+
+  filteredByStatus = signal<TaskProps[]>([]);
+
+  private filterTaskByStatus(selected: TTaskType | null) {
+    return selected ? this.tasksGroupByStatus[selected] || [] : [];
+  }
+
+  onStatusSelected(selected: TTaskType | null) {
+    this.filteredByStatus.set(
+      this.filterTaskByStatus(selected ?? 'GETTING_STARTED'),
+    );
+    console.log(this.filteredByStatus(), selected);
+    this.cdr.detectChanges();
   }
 }

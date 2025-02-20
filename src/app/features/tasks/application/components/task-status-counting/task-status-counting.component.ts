@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskProps, TTaskType } from '../../../domain/Task';
 
 @Component({
@@ -11,7 +11,9 @@ import { TaskProps, TTaskType } from '../../../domain/Task';
 })
 export class TaskStatusCountingComponent {
   @Input() tasksGroupByStatus!: Record<TTaskType, TaskProps[]>;
-  selectedStatus: TTaskType | null = null;
+  @Output() statusSelected = new EventEmitter<TTaskType | null>();
+
+  selectedStatus: TTaskType | null = 'GETTING_STARTED';
   dataForMatch = {
     GETTING_STARTED: {
       title: 'Por empezar',
@@ -42,18 +44,20 @@ export class TaskStatusCountingComponent {
 
   toggleSelection(type: string) {
     const newType = type as TTaskType;
-    this.selectedStatus = (this.selectedStatus === newType) ? null : newType;
+    this.selectedStatus = this.selectedStatus === newType ? null : newType;
+
+    this.statusSelected.emit(this.selectedStatus);
   }
 
   getDynamicNgClass([type, tasks]: [string, TaskProps[]]) {
-    const group = this.dataForMatch[type as TTaskType]
+    const group = this.dataForMatch[type as TTaskType];
     return {
       [`bg-${group.color}`]: true,
       'hover:bg-opacity-40': this.selectedStatus !== type,
-      '!bg-opacity-60 scale-105 shadow-lg': this.selectedStatus === type
+      '!bg-opacity-60 scale-105 shadow-lg': this.selectedStatus === type,
     };
   }
-  trackByGroupType(_index: number, group: { type: string }) {
-    return group.type;
+  trackByGroupType(_index: number, [type]: [string, TaskProps[]]) {
+    return type;
   }
 }
