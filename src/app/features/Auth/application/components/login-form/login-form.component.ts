@@ -54,9 +54,6 @@ export class LoginFormComponent {
   submit() {
     if (this.form.invalid) return;
 
-    this.getUserUseCase.execute(this.form.value.email).subscribe({
-      next: (data) => console.log(data),
-      error: (error) => console.error(error),
-    });
+    this.getUserUseCase.execute(this.form.value.email).subscribe();
   }
 }

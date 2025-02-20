@@ -14,8 +14,6 @@ export class NoAuthGuard implements CanActivate {
   canActivate(): boolean {
     const user = this.getUserUseCase.userSignal;
 
-    console.log(user, ':D');
-
     if (user) {
       this.router.navigate(['/dashboard']);
       return false;

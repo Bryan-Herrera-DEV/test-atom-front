@@ -38,7 +38,6 @@ export class ManageTasksComponent {
     this.filteredByStatus.set(
       this.filterTaskByStatus(selected ?? 'GETTING_STARTED'),
     );
-    console.log(this.filteredByStatus(), selected);
     this.cdr.detectChanges();
   }
 }
