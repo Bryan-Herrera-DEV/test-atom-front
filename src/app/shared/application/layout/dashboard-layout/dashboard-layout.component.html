@@ -1,0 +1,14 @@
+<div class="w-full h-full relative">
+  <div
+    class="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+  >
+    <div class="flex justify-between items-center">
+      <h1 [class]="hlmH3">Welcome, User!</h1>
+
+      <app-user-info />
+    </div>
+    <div [class]="hlmP">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

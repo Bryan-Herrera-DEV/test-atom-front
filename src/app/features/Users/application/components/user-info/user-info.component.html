@@ -1,0 +1,22 @@
+<button
+  hlmBtn
+  [variant]="'outline'"
+  class="p-0 h-8 w-8 rounded-full"
+  [brnMenuTriggerFor]="menu"
+>
+  <hlm-icon size="sm" class="m-0 p-0" name="lucideUser" />
+</button>
+
+<ng-template #menu>
+  <hlm-menu>
+    <hlm-menu-group>
+      <hlm-menu-label class="m-0 py-0">{{
+        fullName | titlecase
+      }}</hlm-menu-label>
+      <hlm-menu-label class="font-light py-0 pb-2">{{ email }}</hlm-menu-label>
+
+      <hlm-menu-separator />
+      <button hlmMenuItem (click)="logout()">Salir</button>
+    </hlm-menu-group>
+  </hlm-menu>
+</ng-template>

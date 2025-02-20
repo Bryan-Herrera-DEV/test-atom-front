@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedGuard } from './features/Auth/infrastructure/guards/logged.guard';
 import { NoAuthGuard } from './features/Auth/infrastructure/guards/no-auth.guard';
+import { DashboardLayoutComponent } from './shared/application/layout/dashboard-layout/dashboard-layout.component';
 import { PrincipalPageComponent } from './shared/application/layout/principal-page/principal-page.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         canActivate: [LoggedGuard],
+        component: DashboardLayoutComponent,
         children: [
           {
             path: '',
