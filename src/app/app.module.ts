@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './features/Auth/auth.module';
 import { CommonRoutingModule } from './features/Common/common-routing.module';
+import { UserEffects } from './features/Users/application/stores/user.effects';
+import { userReducer } from './features/Users/application/stores/user.reduce';
+import { UsersModule } from './features/Users/user.module';
 import { ToastEffects } from './shared/application/toast/store/toast.effects';
 import { NgRxUtilities } from './shared/domain/utils/NgRxUtilities.service';
 
@@ -22,9 +25,12 @@ import { NgRxUtilities } from './shared/domain/utils/NgRxUtilities.service';
     AppRoutingModule,
     RouterModule,
     AuthModule,
+    UsersModule,
     CommonRoutingModule,
     StoreModule.forRoot(
-      {},
+      {
+        user: userReducer,
+      },
       {
         runtimeChecks: {
           strictStateImmutability: true,
@@ -32,7 +38,7 @@ import { NgRxUtilities } from './shared/domain/utils/NgRxUtilities.service';
         },
       },
     ),
-    EffectsModule.forRoot([ToastEffects]),
+    EffectsModule.forRoot([UserEffects, ToastEffects]),
   ],
   providers: [
     RouterModule,

@@ -6,6 +6,5 @@
 export const environment = {
   APP_NAME: 'Atom TODO local',
   APP_DESCRIPTION: 'Aplicación de tareas con Angular 18 para gestionar tareas',
-  API_URL: 'http://127.0.0.1:5001/prueba-test-atom/us-central1/api'
+  API_URL: 'http://127.0.0.1:5001/prueba-test-atom/us-central1/api',
 };
-

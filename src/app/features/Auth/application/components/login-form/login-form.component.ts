@@ -17,6 +17,7 @@ import { HlmInputDirective, HlmInputModule } from '@spartan-ng/ui-input-helm';
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmSelectImports, HlmSelectModule } from '@spartan-ng/ui-select-helm';
 import { HlmSeparatorDirective } from '@spartan-ng/ui-separator-helm';
+import { GetUserUseCase } from '../../../../Users/application/use-case/get-user.use-case';
 
 @Component({
   providers: [
@@ -44,9 +45,17 @@ export class LoginFormComponent {
   public form: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
   });
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly getUserUseCase: GetUserUseCase,
+  ) {}
 
   submit() {
-    console.log('submit', this.form.value);
+    if (this.form.invalid) return;
+
+    this.getUserUseCase.execute(this.form.value.email).subscribe({
+      next: (data) => console.log(data),
+      error: (error) => console.error(error),
+    });
   }
 }
