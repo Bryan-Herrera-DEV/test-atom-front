@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+import { HlmScrollAreaComponent } from '@spartan-ng/ui-scrollarea-helm';
 import { BrnSelectModule } from '@spartan-ng/ui-select-brain';
 import { HlmSelectModule } from '@spartan-ng/ui-select-helm';
 import {
@@ -36,6 +37,7 @@ import { TaskProps } from '../../../domain/Task';
     HlmButtonDirective,
     DatePipe,
     ReactiveFormsModule,
+    HlmScrollAreaComponent
   ],
   templateUrl: './table-tasks.component.html',
   styleUrl: './table-tasks.component.scss',
