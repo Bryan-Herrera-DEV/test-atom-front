@@ -12,6 +12,7 @@ import { HlmInputDirective, HlmInputModule } from '@spartan-ng/ui-input-helm';
 import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 import { HlmSelectImports, HlmSelectModule } from '@spartan-ng/ui-select-helm';
 import { HlmSeparatorDirective } from '@spartan-ng/ui-separator-helm';
+import { CreateUserUseCase } from '../../../../Users/application/use-case/create-user.use-case';
 @Component({
   selector: 'app-register-form',
   standalone: true,
@@ -37,9 +38,19 @@ export class RegisterFormComponent {
     lastName: ['', [Validators.required]],
   });
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly createUserUseCase: CreateUserUseCase,
+  ) {}
 
   submit() {
     if (this.form.invalid) return;
+    const { email, name, lastName } = this.form.value;
+
+    this.createUserUseCase.execute({
+      email,
+      name,
+      lastName,
+    });
   }
 }
