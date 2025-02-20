@@ -1,0 +1,23 @@
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <!-- Renderizamos un card por cada entrada (key-value) del objeto -->
+  @for (group of mappedTasksGrouped; track group[0]) {
+    <div
+      class="border rounded shadow-sm p-4 border-border bg-opacity-20 hover:cursor-pointer transition-all duration-300 ease-in-out"
+      [ngClass]="getDynamicNgClass(group)"
+      (click)="toggleSelection(group[0])"
+    >
+      <h3 class="text-lg font-semibold mb-2">{{ getData(group, "title") }}</h3>
+      <p class="text-sm">
+        Cantidad: <strong>{{ getData(group, "tasks").length }}</strong>
+      </p>
+    </div>
+  }
+
+  <!-- Card de "Totales" -->
+  <div class="border rounded shadow-sm p-4">
+    <h3 class="text-lg font-semibold mb-2">Totales</h3>
+    <p class="text-sm">
+      Cantidad: <strong>{{ 0 }}</strong>
+    </p>
+  </div>
+</div>

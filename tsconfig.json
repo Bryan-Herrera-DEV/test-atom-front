@@ -21,7 +21,8 @@
     "noUnusedParameters": false,
     "lib": [
       "ES2022",
-      "dom"
+      "dom",
+      "Esnext"
     ],
     "useDefineForClassFields": false,
     "paths": {

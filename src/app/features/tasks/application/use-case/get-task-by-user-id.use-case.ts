@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UseCase } from '../../../../shared/domain/core/UseCase';
 import { GetUserUseCase } from '../../../Users/application/use-case/get-user.use-case';
-import { TaskProps } from '../../domain/Task';
+import { TaskProps, TTaskType } from '../../domain/Task';
 import { getTask } from '../stores/tasks.actions';
 import { TaskState } from '../stores/tasks.reducers';
 import { selectAllTasks, selectTaskLoading } from '../stores/tasks.selectors';
@@ -55,5 +55,12 @@ export class GetTaskByUserIdUseCase implements UseCase<null, TaskProps[]> {
   }
   get loadingSignal(): WritableSignal<boolean> {
     return this._loading;
+  }
+
+  get forTypeGroped(): Record<TTaskType, TaskProps[]> {
+    return Object.groupBy(this.taskSignal, (task) => task.type) as Record<
+      TTaskType,
+      TaskProps[]
+    >;
   }
 }
