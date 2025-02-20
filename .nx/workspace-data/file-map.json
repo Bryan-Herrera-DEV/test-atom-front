@@ -132,7 +132,7 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
-      "testAtom": [
+      "test-atom-front": [
         {
           "file": ".editorconfig",
           "hash": "6686520031028425313"

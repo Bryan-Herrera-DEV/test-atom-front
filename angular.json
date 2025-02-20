@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "testAtom": {
+    "test-atom-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/testAtom",
+            "outputPath": "dist/test-atom-front",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -110,10 +110,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "testAtom:build:production"
+              "buildTarget": "test-atom-front:build:production"
             },
             "development": {
-              "buildTarget": "testAtom:build:development"
+              "buildTarget": "test-atom-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -146,7 +146,7 @@
           "builder": "@storybook/angular:start-storybook",
           "options": {
             "configDir": ".storybook",
-            "browserTarget": "testAtom:build",
+            "browserTarget": "test-atom-front:build",
             "compodoc": true,
             "compodocArgs": [
               "-e",
@@ -161,7 +161,7 @@
           "builder": "@storybook/angular:build-storybook",
           "options": {
             "configDir": ".storybook",
-            "browserTarget": "testAtom:build",
+            "browserTarget": "test-atom-front:build",
             "compodoc": true,
             "compodocArgs": [
               "-e",
