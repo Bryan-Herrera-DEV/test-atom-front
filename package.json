@@ -12,7 +12,9 @@
       "build-qa": "ng build --configuration=qa",
       "build-dev": "ng build --configuration=development",
       "prepare": "husky",
-      "pretty-quick": "pretty-quick --staged"
+      "pretty-quick": "pretty-quick --staged",
+      "g-build": "ng build --configuration=production --base-href 'https://Bryan-Herrera-DEV.github.io/test-atom-front/'",
+      "github-deploy": "npx angular-cli-ghpages --dir=dist/<repository-name>/browser --no-silent"
     },
     "private": true,
     "dependencies": {
@@ -112,4 +114,3 @@
       ]
     }
   }
-  
